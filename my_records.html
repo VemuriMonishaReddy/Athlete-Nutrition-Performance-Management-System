@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}My Records{% endblock %}{% block content %}
+<div class="page-head"><div><h1>My Records</h1><div class="muted">Only records linked to your athlete account are shown.</div></div></div>
+{% if athlete %}<div class="card"><h3>Profile</h3><div class="grid">{% for k,v in athlete.items() %}<div><span class="muted">{{ k|replace('_',' ')|title }}</span><div><strong>{{ v }}</strong></div></div>{% endfor %}</div></div>{% endif %}
+{% for title,records in [('Diet Plans',diet_plans),('Workout Plans',workouts),('Attendance',attendance_records),('Performance',performances),('Progress',progress_records)] %}<h2 class="section-title">{{ title }}</h2><div class="table-wrap"><table><thead><tr>{% if records %}{% for key in records[0].keys() %}<th>{{ key|replace('_',' ')|title }}</th>{% endfor %}{% else %}<th>No records</th>{% endif %}</tr></thead><tbody>{% for row in records %}<tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endfor %}
+{% endblock %}

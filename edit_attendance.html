@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Edit Attendance</h1>
+
+<form method="POST">
+
+    <label for="athlete_id">Athlete:</label>
+    <br>
+
+    <select name="athlete_id" id="athlete_id" required>
+
+        {% for athlete in athletes %}
+
+            <option
+                value="{{ athlete.Athlete_ID }}"
+                {% if athlete.Athlete_ID == attendance.Athlete_ID %}
+                    selected
+                {% endif %}
+            >
+                {{ athlete.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="attendance_date">Attendance Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="attendance_date"
+        id="attendance_date"
+        value="{{ attendance.Attendance_Date }}"
+        required
+    >
+
+    <br><br>
+
+    <label for="status">Status:</label>
+<br>
+
+<select name="status" id="status" required>
+
+    <option
+        value="Present"
+        {% if attendance.Status == 'Present' %}
+            selected
+        {% endif %}
+    >
+        Present
+    </option>
+
+    <option
+        value="Absent"
+        {% if attendance.Status == 'Absent' %}
+            selected
+        {% endif %}
+    >
+        Absent
+    </option>
+
+</select>
+
+<br><br>
+
+
+    <button type="submit">
+        Update Attendance
+    </button>
+
+    <a href="{{ url_for('attendance') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

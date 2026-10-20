@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Nutritionist</title>
+</head>
+<body>
+
+<h1>Add Nutritionist</h1>
+
+<form method="POST">
+
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <br><br>
+
+    <label>Qualification:</label>
+    <input type="text" name="qualification">
+
+    <br><br>
+
+    <label>Contact:</label>
+    <input type="text" name="contact">
+
+    <br><br>
+
+    <button type="submit">Add Nutritionist</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('nutritionists') }}">
+    <button>Back</button>
+</a>
+
+</body>
+</html>

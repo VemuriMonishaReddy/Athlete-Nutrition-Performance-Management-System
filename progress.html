@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Progress Management</h1>
+
+<a href="{{ url_for('add_progress') }}" class="add-button">
+    Add Progress
+</a>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Athlete</th>
+        <th>Date</th>
+        <th>Weight</th>
+        <th>BMI</th>
+        <th>Body Fat %</th>
+        <th>Notes</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for progress in progress_records %}
+
+    <tr>
+
+        <td>{{ progress.Progress_ID }}</td>
+        <td>{{ progress.Athlete_Name }}</td>
+        <td>{{ progress.Record_Date }}</td>
+        <td>{{ progress.Weight }}</td>
+        <td>{{ progress.BMI }}</td>
+        <td>{{ progress.Body_Fat_Percentage }}</td>
+        <td>{{ progress.Notes }}</td>
+
+        <td>
+
+            <a
+                href="{{ url_for('edit_progress', progress_id=progress.Progress_ID) }}"
+                class="action-link">
+                Edit
+            </a>
+
+            <form
+                action="{{ url_for('delete_progress', progress_id=progress.Progress_ID) }}"
+                method="POST"
+                class="action-form">
+
+                <button type="submit" class="delete-button">
+                    Delete
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

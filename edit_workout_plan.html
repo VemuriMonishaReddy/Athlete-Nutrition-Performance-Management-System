@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Edit Workout Plan</h1>
+
+<form method="POST">
+
+    <label for="athlete_id">Athlete:</label>
+    <br>
+
+    <select name="athlete_id" id="athlete_id" required>
+
+        {% for athlete in athletes %}
+
+            <option
+                value="{{ athlete.Athlete_ID }}"
+                {% if athlete.Athlete_ID == workout_plan.Athlete_ID %}
+                    selected
+                {% endif %}
+            >
+                {{ athlete.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="coach_id">Coach:</label>
+    <br>
+
+    <select name="coach_id" id="coach_id" required>
+
+        {% for coach in coaches %}
+
+            <option
+                value="{{ coach.Coach_ID }}"
+                {% if coach.Coach_ID == workout_plan.Coach_ID %}
+                    selected
+                {% endif %}
+            >
+                {{ coach.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="plan_name">Plan Name:</label>
+    <br>
+
+    <input
+        type="text"
+        name="plan_name"
+        id="plan_name"
+        value="{{ workout_plan.Plan_Name }}"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="start_date">Start Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="start_date"
+        id="start_date"
+        value="{{ workout_plan.Start_Date }}"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="end_date">End Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="end_date"
+        id="end_date"
+        value="{{ workout_plan.End_Date or '' }}"
+    >
+
+    <br><br>
+
+
+    <button type="submit">
+        Update Workout Plan
+    </button>
+
+    <a href="{{ url_for('workout_plans') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

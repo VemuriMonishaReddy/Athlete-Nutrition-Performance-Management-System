@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+
+{% block title %}
+Athlete Management System
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .dashboard-header {
+        padding: 25px 0 40px 0;
+    }
+
+    .dashboard-label {
+        display: inline-block;
+
+        color: #2563eb;
+        background: #eff6ff;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        padding: 6px 11px;
+
+        border-radius: 20px;
+
+        margin-bottom: 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 44px;
+        line-height: 1.15;
+
+        margin-bottom: 15px;
+
+        letter-spacing: -1px;
+    }
+
+    .dashboard-header p {
+        max-width: 760px;
+
+        color: #64748b;
+
+        font-size: 17px;
+        line-height: 1.7;
+
+        margin-bottom: 0;
+    }
+
+    .overview {
+        background: white;
+
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+
+        padding: 25px;
+
+        margin-bottom: 45px;
+
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    body.dark-mode .overview {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    body.dark-mode .module-card {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    body.dark-mode .module-card:hover {
+        border-color: #3b5a8a;
+    }
+
+    .overview h2 {
+        font-size: 21px;
+        margin-bottom: 9px;
+    }
+
+    .overview p {
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        margin-bottom: 22px;
+    }
+
+    .section-header h2 {
+        font-size: 27px;
+        margin-bottom: 7px;
+    }
+
+    .section-header p {
+        color: #64748b;
+        margin-bottom: 0;
+    }
+
+    .module-grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 20px;
+    }
+
+    .module-card {
+        background: white;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 12px;
+
+        padding: 24px;
+
+        min-height: 205px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    body.dark-mode .overview {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    body.dark-mode .module-card {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    body.dark-mode .module-card:hover {
+        border-color: #3b5a8a;
+    }
+
+    .module-card:hover {
+        transform: translateY(-3px);
+
+        border-color: #bfdbfe;
+
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.10);
+    }
+
+    .module-card h3 {
+        font-size: 21px;
+
+        margin-bottom: 10px;
+    }
+
+    .module-card p {
+        color: #64748b;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 22px;
+    }
+
+    .module-button {
+        display: inline-block;
+
+        width: fit-content;
+
+        background: #2563eb;
+        color: white;
+
+        text-decoration: none;
+
+        padding: 9px 15px;
+
+        border-radius: 7px;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .module-button:hover {
+        background: #1d4ed8;
+    }
+
+    @media (max-width: 1000px) {
+
+        .module-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+    @media (max-width: 650px) {
+
+        .dashboard-header {
+            padding-top: 10px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 34px;
+        }
+
+        .dashboard-header p {
+            font-size: 16px;
+        }
+
+        .module-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+
+<section class="dashboard-header">
+
+    <div class="dashboard-label">
+        ATHLETE MANAGEMENT PLATFORM
+    </div>
+
+    <h1>
+        Manage Athlete Development
+        <br>
+        From One System
+    </h1>
+
+    <p>
+        A centralized platform for managing athlete profiles,
+        coaching, sports, nutrition, training, attendance,
+        competitions, performance and progress.
+    </p>
+
+</section>
+
+
+<section class="overview">
+
+    <h2>
+        System Overview
+    </h2>
+
+    <p>
+        Access and manage all major areas of athlete development
+        through the modules below. Each module is connected to
+        the central database for efficient record management.
+    </p>
+
+</section>
+
+
+<section>
+
+    <div class="section-header">
+
+        <h2>
+            Management Modules
+        </h2>
+
+        <p>
+            Select a module to view and manage its records.
+        </p>
+
+    </div>
+
+
+    <div class="module-grid">
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Athletes
+                </h3>
+
+                <p>
+                    Manage athlete profiles, personal details,
+                    sports, coaches and contact information.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('athletes') }}"
+                class="module-button"
+            >
+                Open Athletes
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Coaches
+                </h3>
+
+                <p>
+                    Manage coaches and their professional
+                    information within the system.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('coaches') }}"
+                class="module-button"
+            >
+                Open Coaches
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Sports
+                </h3>
+
+                <p>
+                    Manage sports available for athletes
+                    and their associated information.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('sports') }}"
+                class="module-button"
+            >
+                Open Sports
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Nutritionists
+                </h3>
+
+                <p>
+                    Manage nutritionists responsible for
+                    athlete nutrition and diet planning.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('nutritionists') }}"
+                class="module-button"
+            >
+                Open Nutritionists
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Diet Plans
+                </h3>
+
+                <p>
+                    Manage athlete diet plans, nutrition
+                    targets and plan duration.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('diet_plans') }}"
+                class="module-button"
+            >
+                Open Diet Plans
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Workout Plans
+                </h3>
+
+                <p>
+                    Manage athlete workout plans and
+                    training schedules.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('workout_plans') }}"
+                class="module-button"
+            >
+                Open Workout Plans
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Attendance
+                </h3>
+
+                <p>
+                    Track athlete attendance and monitor
+                    attendance records by date.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('attendance') }}"
+                class="module-button"
+            >
+                Open Attendance
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Competitions
+                </h3>
+
+                <p>
+                    Manage competitions, sporting events,
+                    dates and locations.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('competitions') }}"
+                class="module-button"
+            >
+                Open Competitions
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Performance
+                </h3>
+
+                <p>
+                    Track athlete scores, rankings,
+                    medals and competition performance.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('performance') }}"
+                class="module-button"
+            >
+                Open Performance
+            </a>
+
+        </div>
+
+
+        <div class="module-card">
+
+            <div>
+
+                <h3>
+                    Progress
+                </h3>
+
+                <p>
+                    Monitor athlete weight, BMI, body fat
+                    and physical progress over time.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('progress') }}"
+                class="module-button"
+            >
+                Open Progress
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}

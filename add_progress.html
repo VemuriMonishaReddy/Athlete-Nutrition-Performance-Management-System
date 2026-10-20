@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Progress</title>
+</head>
+
+<body>
+
+<h1>Add Progress</h1>
+
+<form method="POST">
+
+<label>Athlete:</label>
+
+<select name="athlete_id" required>
+
+{% for a in athletes %}
+
+<option value="{{ a.Athlete_ID }}">
+{{ a.Name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Record Date:</label>
+
+<input type="date"
+name="record_date"
+required>
+
+<br><br>
+
+<label>Weight:</label>
+
+<input type="number"
+step="0.01"
+name="weight">
+
+<br><br>
+
+<label>BMI:</label>
+
+<input type="number"
+step="0.01"
+name="bmi">
+
+<br><br>
+
+<label>Body Fat Percentage:</label>
+
+<input type="number"
+step="0.01"
+name="body_fat_percentage">
+
+<br><br>
+
+<label>Notes:</label>
+
+<input type="text"
+name="notes">
+
+<br><br>
+
+<button type="submit">
+Add Progress
+</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('progress') }}">
+<button>Back</button>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Add Attendance</h1>
+
+<form method="POST">
+
+    <label for="athlete_id">Athlete:</label>
+    <br>
+
+    <select name="athlete_id" id="athlete_id" required>
+
+        <option value="">Select Athlete</option>
+
+        {% for athlete in athletes %}
+
+            <option value="{{ athlete.Athlete_ID }}">
+                {{ athlete.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="attendance_date">Attendance Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="attendance_date"
+        id="attendance_date"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="status">Status:</label>
+    <br>
+
+    <select name="status" id="status" required>
+
+        <option value="">Select Status</option>
+
+        <option value="Present">Present</option>
+
+        <option value="Absent">Absent</option>
+
+    </select>
+
+    <br><br>
+
+
+    <button type="submit">
+        Add Attendance
+    </button>
+
+    <a href="{{ url_for('attendance') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

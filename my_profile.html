@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}My Profile{% endblock %}{% block content %}
+<div class="page-head"><div><h1>My Profile</h1><div class="muted">Account and linked profile information.</div></div></div>
+<div class="grid"><div class="card"><h3>Account</h3><p><strong>Username:</strong> {{ user.Username }}</p><p><strong>Role:</strong> {{ user.Role }}</p></div>{% if athlete %}<div class="card"><h3>Athlete Profile</h3>{% for k,v in athlete.items() %}<p><strong>{{ k|replace('_',' ')|title }}:</strong> {{ v }}</p>{% endfor %}</div>{% endif %}{% if coach %}<div class="card"><h3>Coach Profile</h3>{% for k,v in coach.items() %}<p><strong>{{ k|replace('_',' ')|title }}:</strong> {{ v }}</p>{% endfor %}</div>{% endif %}{% if nutritionist %}<div class="card"><h3>Nutritionist Profile</h3>{% for k,v in nutritionist.items() %}<p><strong>{{ k|replace('_',' ')|title }}:</strong> {{ v }}</p>{% endfor %}</div>{% endif %}</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Competition</title>
+</head>
+
+<body>
+
+<h1>Edit Competition</h1>
+
+<form method="POST">
+
+<label>Sport:</label>
+
+<select name="sport_id" required>
+
+{% for s in sports %}
+
+<option value="{{ s.Sport_ID }}"
+{% if s.Sport_ID == competition.Sport_ID %}
+selected
+{% endif %}>
+
+{{ s.Sport_Name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Competition Name:</label>
+
+<input type="text"
+name="competition_name"
+value="{{ competition.Competition_Name }}"
+required>
+
+<br><br>
+
+<label>Competition Date:</label>
+
+<input type="date"
+name="competition_date"
+value="{{ competition.Competition_Date }}"
+required>
+
+<br><br>
+
+<label>Location:</label>
+
+<input type="text"
+name="location"
+value="{{ competition.Location or '' }}">
+
+<br><br>
+
+<button type="submit">
+Update Competition
+</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('competitions') }}">
+<button>Back</button>
+</a>
+
+</body>
+</html>

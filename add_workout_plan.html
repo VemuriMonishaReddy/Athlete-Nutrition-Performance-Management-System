@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Add Workout Plan</h1>
+
+<form method="POST">
+
+    <label for="athlete_id">Athlete:</label>
+    <br>
+
+    <select name="athlete_id" id="athlete_id" required>
+
+        <option value="">Select Athlete</option>
+
+        {% for athlete in athletes %}
+
+            <option value="{{ athlete.Athlete_ID }}">
+                {{ athlete.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="coach_id">Coach:</label>
+    <br>
+
+    <select name="coach_id" id="coach_id" required>
+
+        <option value="">Select Coach</option>
+
+        {% for coach in coaches %}
+
+            <option value="{{ coach.Coach_ID }}">
+                {{ coach.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="plan_name">Plan Name:</label>
+    <br>
+
+    <input
+        type="text"
+        name="plan_name"
+        id="plan_name"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="start_date">Start Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="start_date"
+        id="start_date"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="end_date">End Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="end_date"
+        id="end_date"
+    >
+
+    <br><br>
+
+
+    <button type="submit">
+        Add Workout Plan
+    </button>
+
+    <a href="{{ url_for('workout_plans') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Performance Management</h1>
+
+<a href="{{ url_for('add_performance') }}" class="add-button">
+    Add Performance
+</a>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Athlete</th>
+        <th>Competition</th>
+        <th>Score</th>
+        <th>Rank</th>
+        <th>Medal</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for performance in performances %}
+
+    <tr>
+
+        <td>{{ performance.Performance_ID }}</td>
+        <td>{{ performance.Athlete_Name }}</td>
+        <td>{{ performance.Competition_Name }}</td>
+        <td>{{ performance.Score }}</td>
+        <td>{{ performance.Rank_Position }}</td>
+        <td>{{ performance.Medal }}</td>
+        <td>{{ performance.Performance_Date }}</td>
+
+        <td>
+
+            <a
+                href="{{ url_for('edit_performance', performance_id=performance.Performance_ID) }}"
+                class="action-link">
+                Edit
+            </a>
+
+            <form
+                action="{{ url_for('delete_performance', performance_id=performance.Performance_ID) }}"
+                method="POST"
+                class="action-form">
+
+                <button type="submit" class="delete-button">
+                    Delete
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

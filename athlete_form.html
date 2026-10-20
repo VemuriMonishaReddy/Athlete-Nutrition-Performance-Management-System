@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% if edit_mode %}
+            Edit Athlete
+        {% else %}
+            Add Athlete
+        {% endif %}
+    </title>
+</head>
+
+<body>
+
+{% if edit_mode %}
+
+<h1>Edit Athlete</h1>
+
+<form method="POST">
+
+    <label>Name:</label>
+    <input type="text" name="name" value="{{ athlete.Name }}" required>
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" value="{{ athlete.Age }}" min="1" required>
+    <br><br>
+
+    <label>Gender:</label>
+
+    <select name="gender" required>
+
+        <option value="Male" {% if athlete.Gender == 'Male' %}selected{% endif %}>
+            Male
+        </option>
+
+        <option value="Female" {% if athlete.Gender == 'Female' %}selected{% endif %}>
+            Female
+        </option>
+
+        <option value="Other" {% if athlete.Gender == 'Other' %}selected{% endif %}>
+            Other
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <label>Height (cm):</label>
+    <input type="number" name="height" value="{{ athlete.Height }}" step="0.01" min="1" required>
+    <br><br>
+
+    <label>Weight (kg):</label>
+    <input type="number" name="weight" value="{{ athlete.Weight }}" step="0.01" min="1" required>
+    <br><br>
+
+    <label>Contact:</label>
+    <input type="text" name="contact" value="{{ athlete.Contact }}">
+    <br><br>
+
+    <label>Sport:</label>
+
+    <select name="sport_id" required>
+
+        {% for sport in sports %}
+
+        <option value="{{ sport.Sport_ID }}"
+            {% if sport.Sport_ID == athlete.Sport_ID %}selected{% endif %}>
+            {{ sport.Sport_Name }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Coach:</label>
+
+    <select name="coach_id">
+
+        <option value="">Select Coach</option>
+
+        {% for coach in coaches %}
+
+        <option value="{{ coach.Coach_ID }}"
+            {% if coach.Coach_ID == athlete.Coach_ID %}selected{% endif %}>
+            {{ coach.Name }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">Update Athlete</button>
+
+</form>
+
+{% else %}
+
+<h1>Add New Athlete</h1>
+
+<form method="POST">
+
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" min="1" required>
+    <br><br>
+
+    <label>Gender:</label>
+
+    <select name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <br><br>
+
+    <label>Height (cm):</label>
+    <input type="number" name="height" step="0.01" min="1" required>
+    <br><br>
+
+    <label>Weight (kg):</label>
+    <input type="number" name="weight" step="0.01" min="1" required>
+    <br><br>
+
+    <label>Contact:</label>
+    <input type="text" name="contact">
+    <br><br>
+
+    <label>Sport:</label>
+
+    <select name="sport_id" required>
+
+        <option value="">Select Sport</option>
+
+        {% for sport in sports %}
+        <option value="{{ sport.Sport_ID }}">
+            {{ sport.Sport_Name }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Coach:</label>
+
+    <select name="coach_id">
+
+        <option value="">Select Coach</option>
+
+        {% for coach in coaches %}
+        <option value="{{ coach.Coach_ID }}">
+            {{ coach.Name }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">Add Athlete</button>
+
+</form>
+
+{% endif %}
+
+<br>
+
+<a href="{{ url_for('athletes') }}">Back to Athletes</a>
+
+</body>
+</html>

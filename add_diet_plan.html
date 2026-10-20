@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Add Diet Plan</h1>
+
+<form method="POST">
+
+    <label for="athlete_id">Athlete:</label>
+    <br>
+
+    <select name="athlete_id" id="athlete_id" required>
+
+        <option value="">Select Athlete</option>
+
+        {% for athlete in athletes %}
+
+            <option value="{{ athlete.Athlete_ID }}">
+                {{ athlete.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="nutritionist_id">Nutritionist:</label>
+    <br>
+
+    <select name="nutritionist_id" id="nutritionist_id" required>
+
+        <option value="">Select Nutritionist</option>
+
+        {% for nutritionist in nutritionists %}
+
+            <option value="{{ nutritionist.Nutritionist_ID }}">
+                {{ nutritionist.Name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+
+    <label for="plan_name">Plan Name:</label>
+    <br>
+
+    <input
+        type="text"
+        name="plan_name"
+        id="plan_name"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="start_date">Start Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="start_date"
+        id="start_date"
+        required
+    >
+
+    <br><br>
+
+
+    <label for="end_date">End Date:</label>
+    <br>
+
+    <input
+        type="date"
+        name="end_date"
+        id="end_date"
+    >
+
+    <br><br>
+
+
+    <label for="calories_target">Calories Target:</label>
+    <br>
+
+    <input
+        type="number"
+        step="0.01"
+        name="calories_target"
+        id="calories_target"
+    >
+
+    <br><br>
+
+
+    <button type="submit">
+        Add Diet Plan
+    </button>
+
+    <a href="{{ url_for('diet_plans') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

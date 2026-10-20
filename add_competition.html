@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Competition</title>
+</head>
+
+<body>
+
+<h1>Add Competition</h1>
+
+<form method="POST">
+
+<label>Sport:</label>
+
+<select name="sport_id" required>
+
+{% for s in sports %}
+
+<option value="{{ s.Sport_ID }}">
+{{ s.Sport_Name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Competition Name:</label>
+
+<input type="text"
+name="competition_name"
+required>
+
+<br><br>
+
+<label>Competition Date:</label>
+
+<input type="date"
+name="competition_date"
+required>
+
+<br><br>
+
+<label>Location:</label>
+
+<input type="text"
+name="location">
+
+<br><br>
+
+<button type="submit">
+Add Competition
+</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('competitions') }}">
+<button>Back</button>
+</a>
+
+</body>
+</html>
