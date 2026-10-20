@@ -1,4 +1,4 @@
-Flask>=3.0,<4
-mysql-connector-python>=9.0,<10
-python-dotenv>=1.0,<2
-Werkzeug>=3.0,<4
+1. Flask
+2. mysql-connector-python
+3. python-dotenv
+4. Werkzeug
